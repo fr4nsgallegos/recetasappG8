@@ -44,92 +44,96 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            FormItem(
-              controlador: titleController,
-              hint: "Ingresa el nombre del platillo",
-              icono: Icons.title,
-            ),
-            FormItem(
-              controlador: descripcionController,
-              hint: "Ingresa la descripción",
-              icono: Icons.description,
-            ),
-            FormItem(
-              controlador: ingredientesController,
-              hint: "Ingresa los ingredientes",
-              icono: Icons.list,
-            ),
-            FormItem(
-              controlador: preparacionController,
-              hint: "Ingresa la preparación",
-              icono: Icons.sync,
-            ),
-            FormItem(
-              controlador: urlImageController,
-              hint: "Ingresa la url de la imagen",
-              icono: Icons.image,
-            ),
-            SizedBox(
-              width: double.infinity,
-              height: 48,
-              child: ElevatedButton(
-                onPressed: () {
-                  RecipeModel recipeTemp = RecipeModel(
-                    titulo: titleController.text,
-                    descripcion: descripcionController.text,
-                    ingredientes: ingredientesController.text,
-                    preparacion: preparacionController.text,
-                    urlImage: urlImageController.text,
-                  );
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FormItem(
+                controlador: titleController,
+                hint: "Ingresa el nombre del platillo",
+                icono: Icons.title,
+              ),
+              FormItem(
+                controlador: descripcionController,
+                hint: "Ingresa la descripción",
+                icono: Icons.description,
+              ),
+              FormItem(
+                controlador: ingredientesController,
+                hint: "Ingresa los ingredientes",
+                icono: Icons.list,
+              ),
+              FormItem(
+                controlador: preparacionController,
+                hint: "Ingresa la preparación",
+                icono: Icons.sync,
+              ),
+              FormItem(
+                controlador: urlImageController,
+                hint: "Ingresa la url de la imagen",
+                icono: Icons.image,
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: 48,
+                child: ElevatedButton(
+                  onPressed: () {
+                    RecipeModel recipeTemp = RecipeModel(
+                      titulo: titleController.text,
+                      descripcion: descripcionController.text,
+                      ingredientes: ingredientesController.text,
+                      preparacion: preparacionController.text,
+                      urlImage: urlImageController.text,
+                    );
 
-                  recipesList.add(recipeTemp);
-                  setState(() {});
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+                    recipesList.add(recipeTemp);
+                    setState(() {});
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                  ),
+                  child: Text(
+                    "Agregar",
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
-                child: Text(
-                  "Agregar",
-                  style: TextStyle(fontSize: 20),
+              ),
+              Divider(
+                height: 40,
+                thickness: 3,
+                color: Colors.white.withOpacity(0.5),
+              ),
+              Text(
+                "Listado General",
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-            Divider(
-              height: 40,
-              thickness: 3,
-              color: Colors.white.withOpacity(0.5),
-            ),
-            Text(
-              "Listado General",
-              style: TextStyle(
-                fontSize: 25,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+              Container(
+                height: 400,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: recipesList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return RecipeItem(
+                      recipesList[index],
+                    );
+                  },
+                ),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: recipesList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return RecipeItem(
-                    recipesList[index],
-                  );
-                },
-              ),
-            ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     // print(correoController.text);
-            //   },
-            //   child: Text("imprimir entrada de usuario"),
-            // )
-          ],
+              // ElevatedButton(
+              //   onPressed: () {
+              //     // print(correoController.text);
+              //   },
+              //   child: Text("imprimir entrada de usuario"),
+              // )
+            ],
+          ),
         ),
       ),
     );
