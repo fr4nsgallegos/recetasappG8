@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:recetas_app_g8/widgets/container_aux.dart';
 
 class ListViewPage extends StatelessWidget {
-  Widget construirContainer() {
-    return Container(
-      margin: EdgeInsets.all(16),
-      height: 200,
-      width: 300,
-      color: Colors.red,
-    );
-  }
-
   List<String> names = ["asd", "asdad", "asdasd", "!#wqdasda"];
 
   @override
@@ -26,7 +18,7 @@ class ListViewPage extends StatelessWidget {
               itemCount: 100,
               itemBuilder: (BuildContext context, int index) {
                 print(index);
-                return construirContainer();
+                return ContainerAux();
               },
             ),
           ),
