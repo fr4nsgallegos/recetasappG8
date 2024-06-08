@@ -6,7 +6,7 @@ import 'package:recetas_app_g8/pages/scroll_page.dart';
 void main() {
   runApp(
     MaterialApp(
-      home: ScrollPage(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
     ),
   );
