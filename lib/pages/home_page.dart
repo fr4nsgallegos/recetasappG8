@@ -60,16 +60,6 @@ class HomePage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  // Container(
-                  //     height: 200,
-                  //     decoration: BoxDecoration(
-                  //       borderRadius: BorderRadius.circular(16),
-                  //       image: DecorationImage(
-                  //         fit: BoxFit.cover,
-                  //         image: NetworkImage(
-                  //             "https://www.solopostres.com/wp-content/uploads/2016/04/receta198.jpg"),
-                  //       ),
-                  //     ))
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Image.network(
