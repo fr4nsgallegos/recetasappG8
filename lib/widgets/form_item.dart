@@ -13,9 +13,14 @@ class FormItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: TextField(
+        obscureText: true,
+        keyboardType: TextInputType.number,
         style: TextStyle(color: Colors.white),
         cursorColor: Colors.orange.shade700,
         controller: controlador,
+        // onChanged: (value) {
+        //   print(value);
+        // },
         decoration: InputDecoration(
           prefixIcon: Icon(icono),
           contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -28,8 +33,9 @@ class FormItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(25),
           ),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(25)),
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(25),
+          ),
         ),
       ),
     );

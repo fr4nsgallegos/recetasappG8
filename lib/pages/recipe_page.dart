@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recetas_app_g8/constants/constants.dart';
 import 'package:recetas_app_g8/models/recipe_model.dart';
+import 'package:recetas_app_g8/widgets/build_detalle_recipe_page.dart';
 
 class RecipePage extends StatelessWidget {
   RecipeModel recipeModel;
@@ -51,38 +52,11 @@ class RecipePage extends StatelessWidget {
                 //cerrar app
                 exit(0);
               },
-              child: Text("Atras"),
+              child: Text("Salir del App"),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class BuildDetalleRecipe extends StatelessWidget {
-  String titulo;
-  String detalle;
-
-  BuildDetalleRecipe(this.titulo, this.detalle);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          titulo,
-          style: tituloStyle,
-        ),
-        Container(
-          padding: EdgeInsets.all(16),
-          child: Text(
-            detalle,
-            style: descripcionStyle,
-          ),
-        ),
-      ],
     );
   }
 }
