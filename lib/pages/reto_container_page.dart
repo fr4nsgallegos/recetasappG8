@@ -7,12 +7,32 @@ class RetoContainerPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("RETOS CONTAINER"),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          IamHeaderWidget(),
-          Helipuerto(),
-          ContainersChallenge(),
-          GradienteContainer(),
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.red, Colors.blue],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                IamHeaderWidget(),
+                Helipuerto(),
+                ContainersChallenge(),
+                GradienteContainer(),
+                GradienteContainer(),
+                GradienteContainer(),
+                GradienteContainer(),
+                GradienteContainer(),
+                GradienteContainer(),
+              ],
+            ),
+          ),
         ],
       ),
     );
