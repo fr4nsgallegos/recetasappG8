@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recetas_app_g8/constants/constants.dart';
 import 'package:recetas_app_g8/models/recipe_model.dart';
 import 'package:recetas_app_g8/pages/recipe_page.dart';
 
@@ -13,7 +14,7 @@ class RecipeItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => RecipePage(),
+            builder: (context) => RecipePage(recipeModel: recipe),
           ),
         );
       },
@@ -50,7 +51,7 @@ class RecipeItem extends StatelessWidget {
             ),
             Text(
               recipe.descripcion,
-              style: TextStyle(color: Colors.white),
+              style: descripcionStyle,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             )

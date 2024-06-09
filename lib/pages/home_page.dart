@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recetas_app_g8/constants/constants.dart';
 import 'package:recetas_app_g8/models/recipe_model.dart';
 import 'package:recetas_app_g8/widgets/form_item.dart';
 import 'package:recetas_app_g8/widgets/recipe_item.dart';
@@ -42,6 +43,7 @@ class _HomePageState extends State<HomePage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text("Mis recetas"),
+        backgroundColor: Color(0xff29304B),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -106,14 +108,7 @@ class _HomePageState extends State<HomePage> {
               thickness: 3,
               color: Colors.white.withOpacity(0.5),
             ),
-            Text(
-              "Listado General",
-              style: TextStyle(
-                fontSize: 25,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            Text("Listado General", style: tituloStyle),
             Expanded(
               child: ListView.builder(
                 itemCount: recipesList.length,
