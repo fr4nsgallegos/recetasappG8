@@ -11,7 +11,91 @@ class RetoContainerPage extends StatelessWidget {
         children: [
           IamHeaderWidget(),
           Helipuerto(),
+          ContainersChallenge(),
+          GradienteContainer(),
         ],
+      ),
+    );
+  }
+}
+
+class GradienteContainer extends StatelessWidget {
+  const GradienteContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200,
+      width: 350,
+      decoration: BoxDecoration(
+        color: Colors.red,
+        borderRadius: BorderRadius.circular(40),
+        gradient: LinearGradient(
+          colors: [
+            Color(0xff7ef29d),
+            Color(0xff0b3866),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          stops: [
+            0.1,
+            0.8,
+          ],
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black,
+            offset: Offset(-10, 10),
+            blurRadius: 10,
+          )
+        ],
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        "Challenge",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 45,
+        ),
+      ),
+    );
+  }
+}
+
+class ContainersChallenge extends StatelessWidget {
+  const ContainersChallenge({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Container(
+        width: 300,
+        height: 100,
+        alignment: Alignment.centerLeft,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+          color: Colors.blue,
+        ),
+        child: Container(
+          height: 100,
+          width: 220,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: Color(0xff93CCF9),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(50),
+              bottomLeft: Radius.circular(50),
+            ),
+          ),
+          child: Text(
+            "Challenge",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 40,
+            ),
+          ),
+        ),
       ),
     );
   }
