@@ -80,16 +80,39 @@ class _HomePageState extends State<HomePage> {
               height: 48,
               child: ElevatedButton(
                 onPressed: () {
-                  RecipeModel recipeTemp = RecipeModel(
-                    titulo: titleController.text,
-                    descripcion: descripcionController.text,
-                    ingredientes: ingredientesController.text,
-                    preparacion: preparacionController.text,
-                    urlImage: urlImageController.text,
-                  );
+                  if (titleController.text.isEmpty &&
+                      descripcionController.text.isEmpty &&
+                      ingredientesController.text.isEmpty &&
+                      preparacionController.text.isEmpty &&
+                      urlImageController.text.isEmpty) {
+                    print("No puedo agregarlo");
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Revisa la información que has llenado."),
+                        elevation: 50,
+                        backgroundColor: Colors.red,
+                      ),
+                    );
+                  } else {
+                    {
+                      RecipeModel recipeTemp = RecipeModel(
+                        titulo: titleController.text,
+                        descripcion: descripcionController.text,
+                        ingredientes: ingredientesController.text,
+                        preparacion: preparacionController.text,
+                        urlImage: urlImageController.text,
+                      );
 
-                  recipesList.add(recipeTemp);
-                  setState(() {});
+                      recipesList.add(recipeTemp);
+                      titleController.clear();
+                      descripcionController.clear();
+                      ingredientesController.clear();
+                      preparacionController.clear();
+                      urlImageController.clear();
+
+                      setState(() {});
+                    }
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange,

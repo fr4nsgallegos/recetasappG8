@@ -13,8 +13,8 @@ class FormItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: TextField(
-        obscureText: true,
-        keyboardType: TextInputType.number,
+        // obscureText: true,
+        // keyboardType: TextInputType.number,
         style: TextStyle(color: Colors.white),
         cursorColor: Colors.orange.shade700,
         controller: controlador,
