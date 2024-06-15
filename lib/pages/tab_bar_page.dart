@@ -22,8 +22,6 @@ class _TabBarPageState extends State<TabBarPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    pagesDetails.add(pagesDetails)
-    
   }
 
   @override
@@ -31,21 +29,29 @@ class _TabBarPageState extends State<TabBarPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("App bar"),
+          title: Text(pagesDetails[activePageIndex].title),
+          backgroundColor: pagesDetails[activePageIndex].bgColor,
         ),
         bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Colors.cyan,
-          buttonBackgroundColor: Colors.yellow,
-          color: Colors.red,
+          backgroundColor: pagesDetails[activePageIndex].bgColor,
+          buttonBackgroundColor:
+              pagesDetails[activePageIndex].colorButtonOption,
+          // color: Colors.red,
           // height: 50,
           index: activePageIndex,
           items: [
-            Icon(Icons.home),
-            Icon(Icons.food_bank_outlined),
-            Icon(Icons.person),
-            Text("4"),
-            Text("5"),
-            Text("6"),
+            pagesDetails[0].icono,
+            pagesDetails[1].icono,
+            pagesDetails[2].icono,
+            pagesDetails[3].icono,
+            pagesDetails[4].icono,
+            pagesDetails[5].icono,
+            // Icon(Icons.home),
+            // Icon(Icons.food_bank_outlined),
+            // Icon(Icons.person),
+            // Text("4"),
+            // Text("5"),
+            // Text("6"),
           ],
           onTap: (index) {
             pageController.animateToPage(index,
@@ -60,16 +66,22 @@ class _TabBarPageState extends State<TabBarPage> {
             setState(() {});
           },
           children: [
-            HomePage(
-              bgColor: Color(0xff264653),
-            ),
-            ListViewPage(bgColor: Color(0xff2a9d8f)),
-            ScrollPage(
-              bgColor: Color(0xffe9c46a),
-            ),
-            CalculatorPage(bgColor: Color(0xff1F1F1F)),
-            RetoContainerPage(bgColor: Color(0xfff4a261)),
-            TextFormFieldExamplePage(bgColor: Color(0xffe76f51)),
+            pagesDetails[0].pageName,
+            pagesDetails[1].pageName,
+            pagesDetails[2].pageName,
+            pagesDetails[3].pageName,
+            pagesDetails[4].pageName,
+            pagesDetails[5].pageName,
+            // HomePage(
+            //   bgColor: Color(0xff264653),
+            // ),
+            // ListViewPage(bgColor: Color(0xff2a9d8f)),
+            // ScrollPage(
+            //   bgColor: Color(0xffe9c46a),
+            // ),
+            // CalculatorPage(bgColor: Color(0xff1F1F1F)),
+            // RetoContainerPage(bgColor: Color(0xfff4a261)),
+            // TextFormFieldExamplePage(bgColor: Color(0xffe76f51)),
           ],
         ),
       ),
