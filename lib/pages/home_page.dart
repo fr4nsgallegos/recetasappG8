@@ -5,6 +5,8 @@ import 'package:recetas_app_g8/widgets/form_item.dart';
 import 'package:recetas_app_g8/widgets/recipe_item.dart';
 
 class HomePage extends StatefulWidget {
+  Color bgColor;
+  HomePage({required this.bgColor});
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -39,12 +41,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff29304B),
+      backgroundColor: widget.bgColor,
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Text("Mis recetas"),
-        backgroundColor: Color(0xff29304B),
-      ),
+      // appBar: AppBar(
+      //   title: Text("Mis recetas"),
+      //   backgroundColor: Color(0xff29304B),
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

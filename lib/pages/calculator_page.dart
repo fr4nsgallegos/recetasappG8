@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recetas_app_g8/constants/constants.dart';
 
 class CalculatorPage extends StatefulWidget {
+  Color bgColor;
+  CalculatorPage({required this.bgColor});
   @override
   State<CalculatorPage> createState() => _CalculatorPageState();
 }
@@ -91,7 +93,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xff1F1F1F),
+        backgroundColor: widget.bgColor,
         // appBar: AppBar(
         //   title: Text("Calculator"),
         // ),
@@ -104,7 +106,10 @@ class _CalculatorPageState extends State<CalculatorPage> {
               height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
                 color: Color(0xff32383D),
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(25),
+                  bottomLeft: Radius.circular(25),
+                ),
               ),
               child: Text(
                 output,
@@ -205,8 +210,8 @@ class BuildBoton extends StatelessWidget {
           backgroundColor: backgroundColor,
         ),
         child: Container(
-          height: MediaQuery.of(context).size.height / 9,
-          width: MediaQuery.of(context).size.width / 9,
+          height: MediaQuery.of(context).size.height / 12,
+          width: MediaQuery.of(context).size.width / 8,
           padding: texto.length == 2 ? EdgeInsets.all(2) : EdgeInsets.all(14),
           child: FittedBox(
             child: Text(

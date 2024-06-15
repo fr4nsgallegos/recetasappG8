@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:recetas_app_g8/widgets/container_aux.dart';
 
 class ScrollPage extends StatelessWidget {
+  Color bgColor;
+  ScrollPage({required this.bgColor});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Scroll Page"),
-      ),
+      backgroundColor: bgColor,
+      // appBar: AppBar(
+      //   title: Text("Scroll Page"),
+      // ),
       body:
           // ListView.builder(
           //   itemCount: 20,

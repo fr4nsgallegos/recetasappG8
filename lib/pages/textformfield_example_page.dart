@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TextFormFieldExamplePage extends StatelessWidget {
+  Color bgColor;
+  TextFormFieldExamplePage({required this.bgColor});
+
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = new TextEditingController();
   TextEditingController titleController2 = new TextEditingController();
@@ -23,9 +26,10 @@ class TextFormFieldExamplePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Text Form Field Example"),
-      ),
+      backgroundColor: bgColor,
+      // appBar: AppBar(
+      //   title: Text("Text Form Field Example"),
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: MediaQuery(

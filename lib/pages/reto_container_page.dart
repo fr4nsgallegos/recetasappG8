@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
 class RetoContainerPage extends StatelessWidget {
+  Color bgColor;
+  RetoContainerPage({required this.bgColor});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("RETOS CONTAINER"),
-      ),
+      // appBar: AppBar(
+      //   title: Text("RETOS CONTAINER"),
+      // ),
       body: Stack(
         children: [
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.red, Colors.blue],
+                colors: [Colors.red, bgColor],
+                // colors: [Colors.red, Colors.blue],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
