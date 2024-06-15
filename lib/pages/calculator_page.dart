@@ -8,17 +8,21 @@ class CalculatorPage extends StatefulWidget {
 
 class _CalculatorPageState extends State<CalculatorPage> {
   String input = '';
-  String output = "0";
+  String output = "";
   String operator = "";
   double num1 = 0.0;
   double num2 = 0.0;
 
   void buttonNumber(String number) {
-    input += number;
+    input != "0" ? input += number : input = number;
   }
 
   void buttonAC() {
     input = "0";
+    output = "0";
+    operator = "";
+    num1 = 0.0;
+    num2 = 0.0;
   }
 
   void buttonDecimal() {
