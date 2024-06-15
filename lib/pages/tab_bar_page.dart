@@ -36,10 +36,10 @@ class _TabBarPageState extends State<TabBarPage> {
           child: ListView(
             children: [
               DrawerHeader(
-                // padding: EdgeInsets.all(8),
-                child: Text("Header"),
+                child: Image.network(
+                    "https://www.pngall.com/wp-content/uploads/5/Mobile-Application-Transparent.png"),
                 decoration: BoxDecoration(
-                  color: Color(0xff669bbc),
+                  color: Colors.black,
                 ),
               ),
               ...pagesDetails
