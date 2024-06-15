@@ -32,6 +32,22 @@ class _TabBarPageState extends State<TabBarPage> {
           title: Text(pagesDetails[activePageIndex].title),
           backgroundColor: pagesDetails[activePageIndex].bgColor,
         ),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              DrawerHeader(
+                // padding: EdgeInsets.all(8),
+                child: Text("Header"),
+                decoration: BoxDecoration(
+                  color: Color(0xff669bbc),
+                ),
+              ),
+              ...pagesDetails
+                  .map((e) => ListTile(leading: e.icono, title: Text(e.title)))
+                  .toList(),
+            ],
+          ),
+        ),
         bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: pagesDetails[activePageIndex].bgColor,
           buttonBackgroundColor:
@@ -40,12 +56,14 @@ class _TabBarPageState extends State<TabBarPage> {
           // height: 50,
           index: activePageIndex,
           items: [
-            pagesDetails[0].icono,
-            pagesDetails[1].icono,
-            pagesDetails[2].icono,
-            pagesDetails[3].icono,
-            pagesDetails[4].icono,
-            pagesDetails[5].icono,
+            ...pagesDetails.map((e) => e.icono).toList()
+
+            // pagesDetails[0].icono,
+            // pagesDetails[1].icono,
+            // pagesDetails[2].icono,
+            // pagesDetails[3].icono,
+            // pagesDetails[4].icono,
+            // pagesDetails[5].icono,
             // Icon(Icons.home),
             // Icon(Icons.food_bank_outlined),
             // Icon(Icons.person),
@@ -66,12 +84,14 @@ class _TabBarPageState extends State<TabBarPage> {
             setState(() {});
           },
           children: [
-            pagesDetails[0].pageName,
-            pagesDetails[1].pageName,
-            pagesDetails[2].pageName,
-            pagesDetails[3].pageName,
-            pagesDetails[4].pageName,
-            pagesDetails[5].pageName,
+            ...pagesDetails.map((e) => e.pageName).toList()
+
+            // pagesDetails[0].pageName,
+            // pagesDetails[1].pageName,
+            // pagesDetails[2].pageName,
+            // pagesDetails[3].pageName,
+            // pagesDetails[4].pageName,
+            // pagesDetails[5].pageName,
             // HomePage(
             //   bgColor: Color(0xff264653),
             // ),
