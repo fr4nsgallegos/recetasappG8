@@ -1,5 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:recetas_app_g8/pages/calculator_page.dart';
+import 'package:recetas_app_g8/pages/home_page.dart';
+import 'package:recetas_app_g8/pages/list_view_page.dart';
+import 'package:recetas_app_g8/pages/scroll_page.dart';
 
 class TabBarPage extends StatelessWidget {
   final pageController = PageController();
@@ -7,6 +11,7 @@ class TabBarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(),
         bottomNavigationBar: CurvedNavigationBar(
           items: [
             Icon(
@@ -14,6 +19,7 @@ class TabBarPage extends StatelessWidget {
               color: Colors.red,
             ),
             Icon(Icons.food_bank_outlined),
+            Icon(Icons.person),
           ],
           onTap: (index) {
             pageController.animateToPage(index,
@@ -24,8 +30,9 @@ class TabBarPage extends StatelessWidget {
         body: PageView(
           controller: pageController,
           children: [
-            Text("Hola"),
-            Text("Chau"),
+            HomePage(),
+            ListViewPage(),
+            ScrollPage(),
           ],
         ),
       ),
