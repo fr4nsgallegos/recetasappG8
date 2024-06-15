@@ -5,14 +5,29 @@ import 'package:recetas_app_g8/pages/home_page.dart';
 import 'package:recetas_app_g8/pages/list_view_page.dart';
 import 'package:recetas_app_g8/pages/scroll_page.dart';
 
-class TabBarPage extends StatelessWidget {
+class TabBarPage extends StatefulWidget {
+  @override
+  State<TabBarPage> createState() => _TabBarPageState();
+}
+
+class _TabBarPageState extends State<TabBarPage> {
   final pageController = PageController();
+
+  int activePageIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text("App bar"),
+        ),
         bottomNavigationBar: CurvedNavigationBar(
+          backgroundColor: Colors.cyan,
+          buttonBackgroundColor: Colors.yellow,
+          color: Colors.red,
+          // height: 50,
+          index: activePageIndex,
           items: [
             Icon(
               Icons.home,
@@ -29,6 +44,10 @@ class TabBarPage extends StatelessWidget {
         ),
         body: PageView(
           controller: pageController,
+          onPageChanged: (index) {
+            activePageIndex = index;
+            setState(() {});
+          },
           children: [
             HomePage(),
             ListViewPage(),
