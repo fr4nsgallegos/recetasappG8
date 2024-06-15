@@ -7,10 +7,79 @@ class CalculatorPage extends StatefulWidget {
 }
 
 class _CalculatorPageState extends State<CalculatorPage> {
-  String input = '0';
+  String input = '';
+  String output = "0";
+  String operator = "";
+  double num1 = 0.0;
+  double num2 = 0.0;
+
+  void buttonNumber(String number) {
+    input += number;
+  }
+
+  void buttonAC() {
+    input = "0";
+  }
+
+  void buttonDecimal() {
+    if (!input.contains(".")) {
+      input += ".";
+    }
+  }
+
+  void deleteNumber() {
+    output.length != 0 ? input = input.substring(0, input.length - 1) : "0";
+  }
+
+  void igualFunction() {
+    switch (operator) {
+      case "+":
+        output = (num1 + num2).toString();
+        break;
+      case "-":
+        output = (num1 - num2).toString();
+        break;
+      case "*":
+        output = (num1 * num2).toString();
+        break;
+      case "/":
+        output = (num1 / num2).toString();
+        break;
+      default:
+        break;
+    }
+  }
 
   void buttonPressed(String textButton) {
-    input = textButton;
+    if (textButton == "AC") {
+      buttonAC();
+    } else if (textButton == "+" ||
+        textButton == "-" ||
+        textButton == "*" ||
+        textButton == "/") {
+      if (operator == "" && !input.isEmpty) {
+        num1 = double.parse(input);
+        operator = textButton;
+        input = "0";
+        print(num1);
+        print(operator);
+      }
+    } else if (textButton == "=") {
+      num2 = double.parse(input);
+      igualFunction();
+      print("RESULTADO: $output");
+      num1 = 0.0;
+      num2 = 0.0;
+      operator = "";
+      input = output;
+    } else if (textButton == ".") {
+      buttonDecimal();
+    } else if (textButton == "<-") {
+      deleteNumber();
+    } else {
+      buttonNumber(textButton);
+    }
+    output = input;
     setState(() {});
   }
 
@@ -34,7 +103,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Text(
-                input,
+                output,
                 style: TextStyle(
                   color: numberColor,
                   fontSize: 65,
@@ -87,6 +156,17 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 BuildBoton("0", bgNumButtonColor, numberColor,
                     () => buttonPressed("0")),
                 BuildBoton(
+                    "<-", bgACColor, oprColor, () => buttonPressed("<-")),
+                BuildBoton(
+                    "+", bgOprButtonColor, oprColor, () => buttonPressed("+")),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(child: Container()),
+                Expanded(child: Container()),
+                BuildBoton(
                     "AC", bgACColor, oprColor, () => buttonPressed("AC")),
                 BuildBoton(
                     "=", bgOprButtonColor, oprColor, () => buttonPressed("=")),
@@ -121,8 +201,8 @@ class BuildBoton extends StatelessWidget {
           backgroundColor: backgroundColor,
         ),
         child: Container(
-          height: MediaQuery.of(context).size.height / 8,
-          width: MediaQuery.of(context).size.width / 8,
+          height: MediaQuery.of(context).size.height / 9,
+          width: MediaQuery.of(context).size.width / 9,
           padding: texto.length == 2 ? EdgeInsets.all(2) : EdgeInsets.all(14),
           child: FittedBox(
             child: Text(
