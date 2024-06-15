@@ -7,6 +7,13 @@ class CalculatorPage extends StatefulWidget {
 }
 
 class _CalculatorPageState extends State<CalculatorPage> {
+  String input = '0';
+
+  void buttonPressed(String textButton) {
+    input = textButton;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,11 +25,20 @@ class _CalculatorPageState extends State<CalculatorPage> {
         body: Column(
           children: [
             Container(
+              padding: EdgeInsets.all(16),
+              alignment: Alignment.bottomRight,
               width: double.infinity,
               height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
                 color: Color(0xff32383D),
                 borderRadius: BorderRadius.circular(25),
+              ),
+              child: Text(
+                input,
+                style: TextStyle(
+                  color: numberColor,
+                  fontSize: 65,
+                ),
               ),
             ),
             SizedBox(
@@ -30,34 +46,50 @@ class _CalculatorPageState extends State<CalculatorPage> {
             ),
             Row(
               children: [
-                BuildBoton("7", bgNumButtonColor, numberColor),
-                BuildBoton("8", bgNumButtonColor, numberColor),
-                BuildBoton("9", bgNumButtonColor, numberColor),
-                BuildBoton("/", bgOprButtonColor, oprColor),
+                BuildBoton("7", bgNumButtonColor, numberColor,
+                    () => buttonPressed("7")),
+                BuildBoton("8", bgNumButtonColor, numberColor,
+                    () => buttonPressed("8")),
+                BuildBoton("9", bgNumButtonColor, numberColor,
+                    () => buttonPressed("9")),
+                BuildBoton(
+                    "/", bgOprButtonColor, oprColor, () => buttonPressed("/")),
               ],
             ),
             Row(
               children: [
-                BuildBoton("4", bgNumButtonColor, numberColor),
-                BuildBoton("5", bgNumButtonColor, numberColor),
-                BuildBoton("6", bgNumButtonColor, numberColor),
-                BuildBoton("*", bgOprButtonColor, oprColor),
+                BuildBoton("4", bgNumButtonColor, numberColor,
+                    () => buttonPressed("4")),
+                BuildBoton("5", bgNumButtonColor, numberColor,
+                    () => buttonPressed("5")),
+                BuildBoton("6", bgNumButtonColor, numberColor,
+                    () => buttonPressed("6")),
+                BuildBoton(
+                    "*", bgOprButtonColor, oprColor, () => buttonPressed("*")),
               ],
             ),
             Row(
               children: [
-                BuildBoton("1", bgNumButtonColor, numberColor),
-                BuildBoton("2", bgNumButtonColor, numberColor),
-                BuildBoton("3", bgNumButtonColor, numberColor),
-                BuildBoton("-", bgOprButtonColor, oprColor),
+                BuildBoton("1", bgNumButtonColor, numberColor,
+                    () => buttonPressed("1")),
+                BuildBoton("2", bgNumButtonColor, numberColor,
+                    () => buttonPressed("2")),
+                BuildBoton("3", bgNumButtonColor, numberColor,
+                    () => buttonPressed("3")),
+                BuildBoton(
+                    "-", bgOprButtonColor, oprColor, () => buttonPressed("-")),
               ],
             ),
             Row(
               children: [
-                BuildBoton(".", bgNumButtonColor, numberColor),
-                BuildBoton("0", bgNumButtonColor, numberColor),
-                BuildBoton("AC", bgACColor, oprColor),
-                BuildBoton("=", bgOprButtonColor, oprColor),
+                BuildBoton(".", bgNumButtonColor, numberColor,
+                    () => buttonPressed(".")),
+                BuildBoton("0", bgNumButtonColor, numberColor,
+                    () => buttonPressed("0")),
+                BuildBoton(
+                    "AC", bgACColor, oprColor, () => buttonPressed("AC")),
+                BuildBoton(
+                    "=", bgOprButtonColor, oprColor, () => buttonPressed("=")),
               ],
             ),
           ],
@@ -71,26 +103,27 @@ class BuildBoton extends StatelessWidget {
   String texto;
   Color backgroundColor;
   Color textColor;
+  VoidCallback funcion;
   BuildBoton(
     this.texto,
     this.backgroundColor,
     this.textColor,
+    this.funcion,
   );
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: funcion,
         style: OutlinedButton.styleFrom(
-            // padding: EdgeInsets.symmetric(horizontal: 30),
-            shape: CircleBorder(),
-            // backgroundColor: Color(0xff282A2E),
-
-            backgroundColor: backgroundColor),
+          shape: CircleBorder(),
+          backgroundColor: backgroundColor,
+        ),
         child: Container(
           height: MediaQuery.of(context).size.height / 8,
           width: MediaQuery.of(context).size.width / 8,
-          padding: EdgeInsets.all(8),
+          padding: texto.length == 2 ? EdgeInsets.all(2) : EdgeInsets.all(14),
           child: FittedBox(
             child: Text(
               texto,
