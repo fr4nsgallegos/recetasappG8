@@ -8,12 +8,12 @@ import 'package:recetas_app_g8/pages/reto_container_page.dart';
 import 'package:recetas_app_g8/pages/scroll_page.dart';
 import 'package:recetas_app_g8/pages/textformfield_example_page.dart';
 
-class NavigatorCurve extends StatefulWidget {
+class NavigatorCurvePage extends StatefulWidget {
   @override
-  State<NavigatorCurve> createState() => _NavigatorCurveState();
+  State<NavigatorCurvePage> createState() => _NavigatorCurvePageState();
 }
 
-class _NavigatorCurveState extends State<NavigatorCurve> {
+class _NavigatorCurvePageState extends State<NavigatorCurvePage> {
   final pageController = PageController();
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   int activePageIndex = 0;
