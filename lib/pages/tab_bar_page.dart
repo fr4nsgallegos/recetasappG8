@@ -15,8 +15,16 @@ class TabBarPage extends StatefulWidget {
 
 class _TabBarPageState extends State<TabBarPage> {
   final pageController = PageController();
-
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
   int activePageIndex = 0;
+
+  void onDrawerItemTap(ScreenModel screenModel) {
+    int index = pagesDetails.indexOf(screenModel);
+    activePageIndex = index;
+    pageController.jumpToPage(activePageIndex);
+    Navigator.pop(context);
+    setState(() {});
+  }
 
   @override
   void initState() {
@@ -28,24 +36,46 @@ class _TabBarPageState extends State<TabBarPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _key,
+        floatingActionButton: FloatingActionButton(onPressed: () {
+          _key.currentState!.openDrawer();
+        }),
         appBar: AppBar(
           title: Text(pagesDetails[activePageIndex].title),
           backgroundColor: pagesDetails[activePageIndex].bgColor,
         ),
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              DrawerHeader(
-                child: Image.network(
-                    "https://www.pngall.com/wp-content/uploads/5/Mobile-Application-Transparent.png"),
-                decoration: BoxDecoration(
-                  color: Colors.black,
+        // endDrawer: Drawer(
+        drawer: Container(
+          width: MediaQuery.of(context).size.width / 1.3,
+          child: Drawer(
+            child: ListView(
+              children: [
+                DrawerHeader(
+                  child: Image.network(
+                      "https://www.pngall.com/wp-content/uploads/5/Mobile-Application-Transparent.png"),
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                  ),
                 ),
-              ),
-              ...pagesDetails
-                  .map((e) => ListTile(leading: e.icono, title: Text(e.title)))
-                  .toList(),
-            ],
+                ...pagesDetails
+                    .map(
+                      (e) => ListTile(
+                        leading: e.icono,
+                        title: Text(e.title),
+                        onTap: () {
+                          onDrawerItemTap(e);
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => e.pageName,
+                          //   ),
+                          // );
+                        },
+                      ),
+                    )
+                    .toList(),
+              ],
+            ),
           ),
         ),
         bottomNavigationBar: CurvedNavigationBar(
