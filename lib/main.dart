@@ -16,6 +16,7 @@ void main() {
       home: HomeWhatsApp(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Playwrite France Moderne',
         appBarTheme: AppBarTheme(
           color: Color(0xff103A27),
           elevation: 5,

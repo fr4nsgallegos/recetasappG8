@@ -43,7 +43,28 @@ class _HomeWhatsAppState extends State<HomeWhatsApp>
         body: TabBarView(
           controller: _tabController,
           children: [
-            Center(child: Text("Camera")),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Camera",
+                    style: TextStyle(
+                      fontFamily: 'Playwrite France Moderne',
+                      // fontStyle: FontStyle.italic,
+                      fontSize: 30,
+                    ),
+                  ),
+                  Text(
+                    "Holaaaaa",
+                    style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontSize: 30,
+                    ),
+                  )
+                ],
+              ),
+            ),
             ChatPage(),
             StatusPage(),
             CallPage(),
