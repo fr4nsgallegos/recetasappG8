@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recetas_app_g8/pages/whatsapp/call_page.dart';
 import 'package:recetas_app_g8/pages/whatsapp/chat_page.dart';
 import 'package:recetas_app_g8/pages/whatsapp/status_page.dart';
@@ -60,6 +61,15 @@ class _HomeWhatsAppState extends State<HomeWhatsApp>
                     style: TextStyle(
                       fontFamily: "Roboto",
                       fontSize: 30,
+                    ),
+                  ),
+                  Text(
+                    "Texto de google fonts",
+                    style: GoogleFonts.lato(
+                      textStyle: TextStyle(
+                        fontSize: 25,
+                        color: Colors.red,
+                      ),
                     ),
                   )
                 ],
