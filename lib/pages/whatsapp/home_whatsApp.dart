@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recetas_app_g8/pages/whatsapp/call_page.dart';
 import 'package:recetas_app_g8/pages/whatsapp/chat_page.dart';
 import 'package:recetas_app_g8/pages/whatsapp/status_page.dart';
 
@@ -45,7 +46,7 @@ class _HomeWhatsAppState extends State<HomeWhatsApp>
             Center(child: Text("Camera")),
             ChatPage(),
             StatusPage(),
-            Center(child: Text("Calls")),
+            CallPage(),
           ],
         ),
       ),
